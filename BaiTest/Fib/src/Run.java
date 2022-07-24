@@ -1,8 +1,16 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class Run {
-    public static void main(String []args) {
+
+    public static void main(String[] args) {
         elapsedTime();
-        System.out.printf("" + fib(4));
+        System.out.println("" + fib(100));
+        System.out.println("" + fib1(100));
+        System.out.println("" + fib3(100));
+        System.out.println("" + fib2(100));
     }
+
     public static void elapsedTime() {
         long t1, t2;
         t1 = System.nanoTime();
@@ -12,7 +20,29 @@ public class Run {
         t2 = System.nanoTime();
         System.out.println("Running time = " + ((t2 - t1) / 1000000) + "ms");
     }
-    /*public static long fib(long n) {
+
+    static Map<Long, Long> m = new HashMap<>();
+
+    public static long fib(long n) {
+        m.put(1l, 1l);
+        m.put(2l, 1l);
+        if (!m.containsKey(n)) {
+            m.put(n, (fib(n - 1) + fib(n - 2)));
+        }
+        return m.get(n);
+    }
+
+    public static long fib3(long n) {
+        long previousFib = 1, currentFib = 1;
+        for (int i = 1; i < n - 1; i++) {
+            long newFib = previousFib + currentFib;
+            previousFib = currentFib;
+            currentFib = newFib;
+        }
+        return currentFib;
+    }
+
+    public static long fib2(long n) {
         // TODO: Calculate Fibonacci value for the given number
         if (n < 0) {
             return -1;
@@ -21,9 +51,9 @@ public class Run {
         } else {
             return fib(n - 1) + fib(n - 2);
         }
-    }*/
+    }
 
-    public static long fib(long n) {
+    public static long fib1(long n) {
         // TODO: Calculate Fibonacci value for the given number
         int f0 = 0;
         int f1 = 1;
@@ -42,4 +72,6 @@ public class Run {
         }
         return fn;
     }
+
+
 }
