@@ -21,38 +21,41 @@ public class Run {
     }
 
     static Map<Long, Long> m = new HashMap<>();
+    //136ms
+    public static long fib(long n) {
+        m.put(1l, 1l);
+        m.put(2l, 1l);
+        if (!m.containsKey(n)) {
+            m.put(n, (fib(n - 1) + fib(n - 2)));
+        }
+        return m.get(n);
+    }
 
-//    public static long fib(long n) {
-//        m.put(1l, 1l);
-//        m.put(2l, 1l);
-//        if (!m.containsKey(n)) {
-//            m.put(n, (fib(n - 1) + fib(n - 2)));
-//        }
-//        return m.get(n);
-//    }
+    //4ms
+    /*public static long fib(long n) {
+        long previousFib = 1, currentFib = 1;
+        for (int i = 1; i < n - 1; i++) {
+            long newFib = previousFib + currentFib;
+            previousFib = currentFib;
+            currentFib = newFib;
+        }
+        return currentFib;
+    }*/
 
-//    public static long fib(long n) {
-//        long previousFib = 1, currentFib = 1;
-//        for (int i = 1; i < n - 1; i++) {
-//            long newFib = previousFib + currentFib;
-//            previousFib = currentFib;
-//            currentFib = newFib;
-//        }
-//        return currentFib;
-//    }
+    //4326ms
+    /*public static long fib(long n) {
+        // TODO: Calculate Fibonacci value for the given number
+        if (n < 0) {
+            return -1;
+        } else if (n == 0 || n == 1) {
+            return n;
+        } else {
+            return fib(n - 1) + fib(n - 2);
+        }
+    }*/
 
-//    public static long fib(long n) {
-//        // TODO: Calculate Fibonacci value for the given number
-//        if (n < 0) {
-//            return -1;
-//        } else if (n == 0 || n == 1) {
-//            return n;
-//        } else {
-//            return fib(n - 1) + fib(n - 2);
-//        }
-//    }
-
-    public static long fib(int n) {
+    //4ms
+    /*public static long fib(int n) {
         // TODO: Calculate Fibonacci value for the given number
         int f0 = 0;
         int f1 = 1;
@@ -71,6 +74,6 @@ public class Run {
         }
         return fn;
     }
-
+*/
 
 }
